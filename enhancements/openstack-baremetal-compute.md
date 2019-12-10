@@ -56,11 +56,14 @@ around the enhancement process.
 ## Summary
 
 OpenStack's [Nova][openstack-nova] service can be configured to provision
-baremetal servers as compute instances.
+baremetal machines as OpenShift Compute Nodes.
 
-This enhancement will allow [Ironic][openstack-ironic]-provisioned compute
-instances to be used as OpenShift compute nodes, when they are made available as
-Nova flavors.
+This enhancement will allow [Ironic][openstack-ironic]-provisioned machines to
+be used as OpenShift Compute Nodes, when they are made available as Nova
+flavors.
+
+In this enhancement, OpenShift's Control Plane nodes run on regular Nova
+virtual machines.
 
 ## Motivation
 
@@ -68,47 +71,44 @@ In heavy-loaded clusters, or when the workload is better handled with specially
 purposed hardware, the functional requirement of controlling where the work is
 computed might outweight the added value of virtualisation.
 
-In OpenStack clusters where Nova transparently provisions baremetal nodes, this
-enhancement will ensure that OpenShift installations can use them as Compute
-nodes.
+In OpenStack clusters where Nova transparently provisions baremetal machines,
+this enhancement will ensure that OpenShift installations can use them as
+Compute Nodes.
 
 ### Goals
 
-* Baremetal nodes provisioned by Nova through Ironic can be used as OpenShift
-  compute nodes
-* Baremetal compute nodes can be attached and detached from a running OpenShift
-  installation
+* Baremetal machines provisioned by Nova through Ironic can be used as
+  OpenShift Compute Nodes, while the Control Plane nodes run on virtualised
+  hardware.
+* Baremetal machines can be attached and detached from a running OpenShift
+  installation to scale Compute Nodes horizontally.
 
 ### Non-Goals
 
-Installation requires the baremetal nodes to be provisioned by Nova through
-Ironic, and that the network connection can be software-operated in such a way
-that they can be automatically integrated into the OpenShift-cluster virtual
-subnet.
-
-An OpenStack setting where baremetal workers sit in their ad-hoc network is not
-supported in this enhancement.
+An OpenStack setting where baremetal machines can't be attached to a virtual
+subnet is not supported in this enhancement.
 
 ## Proposal
 
-This enhancement is less about adding a completely new feature, than it is
-about uncovering unknowns in a configuration that might work out-of-the-box in
+This enhancement is less about adding a new logical piece, than it is about
+uncovering unknowns in a configuration that might work out-of-the-box in
 selected environments.
 
-As such, the implementation consists of:
+Therefore, the implementation consists of:
 * identifying a reference architecture
 * anticipating probable issues
 * testing and fixing errors
 
 ### Characteristics of the reference architecture
 
-* The reference OpenStack cluster transparently provisions baremetal nodes
-* Provisioned baremetal nodes can be attached to a virtual subnet
+* The reference OpenStack cluster transparently provisions baremetal machines
+* Provisioned baremetal machines can be attached to a Neutron virtual subnet
 
 ### Probable issues
 
 * The Ignition boot system consisting on a second payload downloaded at runtime
-  requires the machine to have access to Swift early in the boot process
+  requires the baremetal machine to have access to Swift early in the boot
+  process.
 
 * When attaching and detaching, the expected timings must be adjusted to
   reflect the different boot and shutdown latencies of physical machines
