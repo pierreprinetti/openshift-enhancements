@@ -32,9 +32,6 @@ This enhancement will allow [Ironic][openstack-ironic]-provisioned machines to
 be used as OpenShift Compute Nodes, when they are made available as Nova
 flavors.
 
-In this enhancement, OpenShift's Control Plane nodes run on regular Nova
-virtual machines.
-
 ## Motivation
 
 In heavy-loaded clusters, or when the workload is better handled with specially
@@ -47,11 +44,8 @@ Compute Nodes.
 
 ### Goals
 
-* Baremetal machines provisioned by Nova through Ironic can be used as
-  OpenShift Compute Nodes, while the Control Plane nodes run on virtualised
-  hardware.
-* Baremetal machines can be attached and detached from a running OpenShift
-  installation to scale Compute Nodes horizontally.
+* Enable running OpenShift on a mix of virtual and baremetal machines.
+* Baremetal machines can be added and removed from a running OpenShift cluster.
 
 ### Non-Goals
 
@@ -82,6 +76,14 @@ Therefore, the implementation consists of:
 
 * When attaching and detaching, the expected timings must be adjusted to
   reflect the different boot and shutdown latencies of physical machines
+
+### User Stories
+
+#### Increased performance
+
+User wants to run the Compute Nodes on baremetal machines for increased
+performance. The Control Plane sits on regular Nova instances to leverage the
+flexibility of virtual machines.
 
 ### Risks and Mitigations
 
