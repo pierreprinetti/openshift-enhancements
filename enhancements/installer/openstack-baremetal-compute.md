@@ -148,7 +148,42 @@ TBD
 
 ## Alternatives
 
-TBD
+Being able to run at least some workloads on baremetal nodes is highly
+desirable for certain users. It should be possible to achieve that
+even without an explicit support:
+
+### Baremetal IPI / UPI
+
+Support for an installer-provisioned infrastructure deployments where
+all the nodes are baremetal is currently being developed.
+Baremetal-based user-provisioned infrastructure deployments are
+supported today.
+
+Both approaches are all-or-nothing. Every workload running on the
+OpenShift cluster will run on a baremetal node. This may get wasteful
+and expensive.
+
+Integrating the baremetal approach with an OpenStack cloud can also be
+more complicated.
+
+
+### OpenStack UPI
+
+It should be possible to add baremetal compute nodes manually to an
+existing deployment.
+
+The process should be similar to adding workers in the OpenStack
+user-provisioned case. Rather than using
+cluster-api-provider-openstack, the baremetal machines will be
+configured and booted up manually, loading the worker Ignition
+configuration from the cluster's machine-config-server.
+
+This should work both with a full-on UPI as well as simply adding
+additional baremetal nodes to an IPI-deployed cluster.
+
+Neither approach has been tested yet and the UPI case, while
+documented, is not officially supported in any OpenShift release so
+far.
 
 ## Infrastructure Needed
 
