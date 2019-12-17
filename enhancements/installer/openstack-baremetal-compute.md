@@ -103,6 +103,8 @@ Are ports (including trunk), security groups, allowed address pairs all these ne
 
 Will the Cluster-API-Provider be able to set them on baremetal-based nodes? Is it even possible to assign a port or a security group to a baremetal machine?
 
+A process where nodes are manually created and attached, such as what described in the UPI documentation, should provide a mitigation.
+
 ## Design Details
 
 ### Test Plan
