@@ -55,9 +55,9 @@ subnet is not supported in this enhancement.
 
 **External connectivity via floating IPs.**
 
-The OpenStack cluster might make the BM nodes accessible, but exposing them via
-floating IPs might represent an increase in complexity and is currently not a
-goal.
+The OpenStack cluster might make the baremetal nodes accessible, but exposing
+them via floating IPs might represent an increase in complexity and is
+currently not a goal.
 
 ## Proposal
 
@@ -72,12 +72,12 @@ Therefore, the implementation consists of:
 
 ### Characteristics of the reference architecture
 
-* The choice between deploying a VM or BM node is done by selecting an appropriate Nova flavour
+* The choice between deploying a virtual or baremetal machine is done by selecting an appropriate Nova flavour
   * which can be done both in install config and passed to Cluster API provider OpenStack
   * for the time being, the interactive prompt does ask the flavor for the Compute Nodes specifically; the choice must be made editing `install-config.yaml`
-* The deployment request makes the same API call to Nova as with a VM install (there are no explicit calls to Ironic or anything in the Installer required)
+* The deployment request makes the same API call to Nova as with a virtual machine install (there are no explicit calls to Ironic or anything in the Installer required)
   * so creating baremetal nodes should work transparently from the installer as well as Cluster API provider OpenStack
-* both VMs and BMs consume the same image from glance
+* both virtual and baremetal machines consume the same image from glance
 
 ### Probable issues
 
