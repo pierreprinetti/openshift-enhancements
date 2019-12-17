@@ -101,7 +101,11 @@ flexibility of virtual machines.
 
 ### Risks and Mitigations
 
-TBD
+**Uncertainty about OpenStack's extra networking resources**
+
+Are ports (including trunk), security groups, allowed address pairs all these necessary for baremetal?
+
+Will the Cluster-API-Provider be able to set them on baremetal-based nodes? Is it even possible to assign a port or a security group to a baremetal machine?
 
 ## Design Details
 
