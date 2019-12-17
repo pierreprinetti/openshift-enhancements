@@ -153,4 +153,4 @@ TBD
 TODO: CI
 
 [openstack-nova]: https://docs.openstack.org/nova "OpenStack Compute (nova)"
-[openstack-ironic]: https://wiki.openstack.org/wiki/Ironic "OpenStack Bare Metal Provisioning Program"
+[openstack-ironic]: https://docs.openstack.org/ironic "OpenStack Ironic"
