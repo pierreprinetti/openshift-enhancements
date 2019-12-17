@@ -88,6 +88,9 @@ Therefore, the implementation consists of:
 * When attaching and detaching, the expected timings must be adjusted to
   reflect the different boot and shutdown latencies of physical machines
 
+* When attaching, the Certificate Signing Request timeout must be adjusted to
+  reflect the different boot and shutdown latencies of physical machines
+
 ### User Stories
 
 #### Increased performance
