@@ -81,10 +81,6 @@ Therefore, the implementation consists of:
 
 ### Probable issues
 
-* The Ignition boot system consisting on a second payload downloaded at runtime
-  requires the baremetal machine to have access to Swift early in the boot
-  process.
-
 * When attaching and detaching, the expected timings must be adjusted to
   reflect the different boot and shutdown latencies of physical machines
 
