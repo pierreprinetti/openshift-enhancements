@@ -48,8 +48,16 @@ Compute Nodes.
 
 ### Non-Goals
 
+**Separate subnets.**
+
 An OpenStack setting where baremetal machines can't be attached to a virtual
 subnet is not supported in this enhancement.
+
+**External connectivity via floating IPs.**
+
+The OpenStack cluster might make the BM nodes accessible, but exposing them via
+floating IPs might represent an increase in complexity and is currently not a
+goal.
 
 ## Proposal
 
