@@ -74,7 +74,7 @@ Therefore, the implementation consists of:
 
 * The choice between deploying a virtual or baremetal machine is done by selecting an appropriate Nova flavour
   * which can be done both in install config and passed to Cluster API provider OpenStack
-  * for the time being, the interactive prompt does ask the flavor for the Compute Nodes specifically; the choice must be made editing `install-config.yaml`
+  * for the time being, the interactive prompt does not ask the flavor for the Compute Nodes specifically; the choice must be made editing `install-config.yaml`
 * The deployment request makes the same API call to Nova as with a virtual machine install (there are no explicit calls to Ironic or anything in the Installer required)
   * so creating baremetal nodes should work transparently from the installer as well as Cluster API provider OpenStack
 * both virtual and baremetal machines consume the same image from glance
